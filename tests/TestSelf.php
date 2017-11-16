@@ -15,4 +15,8 @@ class TestSelf extends TestCase
         echo 'self';
         $this->assertEquals('1', '1');
     }
+
+
+
+
 }
