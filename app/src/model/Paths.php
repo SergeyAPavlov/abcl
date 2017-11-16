@@ -39,4 +39,17 @@ class Paths
         return ($res);
     }
 
+    public function listNodes($url)
+    {
+        if ($url == '/') $url = '';
+        $abs = $this->rel2real($url);
+        $list = [];
+        foreach (new \DirectoryIterator($abs) as $fileInfo) {
+            if(!$fileInfo->isDir() OR $fileInfo->isDot()) continue;
+            $list[] = $url.'/'.$fileInfo->getFilename();
+        }
+        return $list;
+
+    }
+
 }

@@ -31,5 +31,15 @@ class testPath extends TestCase
 
         $this->assertEquals(true, $paths->checkRoot($path));
     }
+    public function testListNodes()
+    {
+        $paths = new \abcl\model\Paths('C:\OSPanel\domains\abcl');
+
+        $list = $paths->listNodes('');
+        $list2 = $paths->listNodes('/app');
+
+        $this->assertEquals(true, $paths->checkRoot($path));
+    }
+
 
 }
