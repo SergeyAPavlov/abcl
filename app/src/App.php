@@ -13,6 +13,7 @@ use abcl\model\Paths;
 class App
 {
     public $config;
+    public $root;
     public $content;
     public $debug;
 
@@ -33,6 +34,7 @@ class App
         else {
             $this->content = $this->config->content;
         }
+        $this->root =  $this->config->root;
         $this->paths = new Paths($content);
         $this->debug = $this->config->debug;
     }
