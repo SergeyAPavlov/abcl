@@ -1,6 +1,8 @@
 <?php
 
 namespace abcl\model;
+use abcl\Helper;
+
 /**
  * Created by PhpStorm.
  * User: Sergey Pavlov
@@ -35,7 +37,7 @@ class Paths
     public function absPath($url)
         // url - путь от точки монтирования. Записывается начиная с /
     {
-        $res = \abcl\Lib::canonicalize($this->root.$url);
+        $res = Helper::canonicalize($this->root.$url);
         return ($res);
     }
 

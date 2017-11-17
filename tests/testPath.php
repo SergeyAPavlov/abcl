@@ -38,7 +38,7 @@ class testPath extends TestCase
         $list = $paths->listNodes('');
         $list2 = $paths->listNodes('/app');
 
-        $this->assertEquals(true, $paths->checkRoot($path));
+        $this->assertEquals(['/app/src'], $list2);
     }
 
 

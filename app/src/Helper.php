@@ -13,7 +13,7 @@
      */
 namespace abcl;
 
-class Lib
+class Helper
 {
     public static function shortClassName($obj)
     {

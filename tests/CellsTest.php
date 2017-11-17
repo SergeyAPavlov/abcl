@@ -17,5 +17,7 @@ class CellsTest extends TestCase
         $app = new \abcl\App();
         $cells = new Cells($app);
         $text = $cells->readCell('/c1', 'cell');
+        $this->assertEquals('пробная ячейка', $text);
+
     }
 }
