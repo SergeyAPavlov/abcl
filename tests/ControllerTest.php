@@ -16,7 +16,7 @@ class RouterTest extends TestCase
     {
         $app = new \abcl\App();
         $router = new \abcl\controllers\main($app, '/c1/inn1');
-        $router->requestAll();
+        $done = $router->requestAll();
 
     }
 
