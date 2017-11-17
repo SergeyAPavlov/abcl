@@ -19,6 +19,7 @@ class RouterTest extends TestCase
         $res = $router->selectRout('/c1/inn1');
         $res1 = $router->selectRout('/c1/c22');
         $res3 = $router->selectRout('/c1/c22/c31');
+        $res4 = $router->selectRout('/c1/inn1');
 
     }
 

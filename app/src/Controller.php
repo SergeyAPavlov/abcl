@@ -12,34 +12,30 @@ abstract class Controller
 {
     protected $app;
     /** @var string  */
-    public $route;
     public $params = [];
     public $data = [];
     public $viewText;
+
+    public $path;
 
     public $name;
 
     /**
      * Controller constructor.
-     * @param string $route
      * @param App $app
      */
-    public function __construct($app, $route = null)
+    public function __construct($app, $path = '')
     {
         $this->app = $app;
-        $this->name = Helper::shortClassName($this);
-        if ($route) {
-            $this->route = $route;
+        if ($path){
+            $this->path = $path;
         }
+        $this->name = Helper::shortClassName($this);
 
     }
 
-    public function requestRoute($path)
+    public function requestRoute()
     {
-        if (empty($this->route)){
-            $this->route = (new Router($this->app, $path))->rout;
-        }
-
         return $this;
 
     }
@@ -55,12 +51,12 @@ abstract class Controller
 
     public function requestView()
     {
-        return View::prepare($this->app, $this->route, $this->data);
+        return View::prepare($this->app, $this->name, $this->data);
     }
 
-    public function requestAll($path)
+    public function requestAll()
     {
-        return $this->requestRoute($path)->requestParams()->requestData()->requestView();
+        return $this->requestRoute()->requestParams()->requestData()->requestView();
     }
 
 

@@ -15,12 +15,14 @@ class Router
     private $app;
 
     public $routList;
+    public $path;
 
     public function __construct(App $app, $path = false)
     {
         $this->app = $app;
         $this->routList = $app->config->routList;
         if ($path !== false){
+            $this->path = $path;
             $this->selectRout($path);
         }
     }
@@ -33,8 +35,9 @@ class Router
         return $this->rout;
     }
 
-    public function selectRout($path)
+    public function selectRout($path = '')
     {
+        if ($path == '') $path = $this->path;
         $bestRout = null;
         $filtered = [];
         foreach ($this->routList as $rout=>$value){
@@ -49,6 +52,7 @@ class Router
         }
         if (!is_null($bestRout)) {
             $this->rout = $this->routList[$bestRout];
+            $this->app->currentPath = $path;
             return $this->rout;
         }
         else return false;

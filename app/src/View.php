@@ -13,7 +13,7 @@ class View
 {
     public static function display($app, $name, $params)
     {
-        $templateFile = $app->root.DIRECTORY_SEPARATOR.$app->templateDir.DIRECTORY_SEPARATOR.$name.'.inc';
+        $templateFile = $app->root.DIRECTORY_SEPARATOR.$app->config->templateDir.DIRECTORY_SEPARATOR.$name.'.inc';
         extract($params);
         include $templateFile;
     }

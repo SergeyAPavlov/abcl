@@ -8,6 +8,7 @@
 
 namespace abcl;
 
+use abcl\model\Cells;
 use abcl\model\Paths;
 
 class App
@@ -19,6 +20,8 @@ class App
 
     public $paths;
     public $log = [];
+    public $currentPath;
+    public $cells;
 
 
     /**
@@ -37,6 +40,7 @@ class App
         $this->root =  $this->config->root;
         $this->paths = new Paths($content);
         $this->debug = $this->config->debug;
+        $this->cells = new Cells($this);
     }
 
     public function logIt($log, $type = '', $errorlevel = 0)

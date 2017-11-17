@@ -36,5 +36,16 @@ class Cells
         return $cellText;
     }
 
+    public function readCells($path, $names)
+    {
+        $cells = [];
+        foreach ($names as $name)
+        {
+            $cells[$name] = $this->readCell($path, $name);
+        }
+        return $cells;
+    }
+
+
 
 }
