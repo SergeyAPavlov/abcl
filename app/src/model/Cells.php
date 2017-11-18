@@ -31,7 +31,12 @@ class Cells
     public function readCell($path, $name)
     {
         $fileName = $this->paths->rel2real($path.DIRECTORY_SEPARATOR.$name.$this->cellExtension);
-        $cellText = file_get_contents($fileName);
+        try{
+            $cellText = file_get_contents($fileName);
+        } catch (\Throwable $t) {
+            $this->app->logIt($fileName, 'fileFail', 1);
+            return false;
+        }
         $this->app->logIt($fileName, 'fileName');
         return $cellText;
     }
@@ -41,7 +46,8 @@ class Cells
         $cells = [];
         foreach ($names as $name)
         {
-            $cells[$name] = $this->readCell($path, $name);
+            $cellText = $this->readCell($path, $name);
+            if ($cellText !== false) $cells[$name] = $cellText;
         }
         return $cells;
     }
