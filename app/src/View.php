@@ -28,4 +28,14 @@ class View
         return $text;
     }
 
+    public static function getMatrix($app, $name, $params)
+    {
+       $text = '';
+        foreach ($params as $row){
+            $text .= self::prepare($app, $name, $row);
+        }
+        return $text;
+    }
+
+
 }
